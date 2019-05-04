@@ -105,6 +105,29 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 //            y1 = HIWORD(lParam);
 //            break;
         case WM_LBUTTONUP:
+            if(counter == 0){
+                x1 = LOWORD(lParam);
+                y1 = HIWORD(lParam);
+                counter++;
+            }
+            else if(counter == 1){
+                x2 = LOWORD(lParam);
+                y2 = HIWORD(lParam);
+                counter++;
+            }
+            else if(counter == 2){
+                u0 = LOWORD(lParam);
+                v0 = HIWORD(lParam);
+                counter++;
+            }
+            else if(counter == 3){
+                u1 = LOWORD(lParam);
+                v1 = HIWORD(lParam);
+                int xArr[] = {x1,x2,u0,u1};
+                int yArr[] = {y1,y2,v0,v1};
+                spline(hdc,xArr,yArr,4,color);
+                counter = 0;
+            }
             /**
             x2 = LOWORD(lParam);
             y2 = HIWORD(lParam);
