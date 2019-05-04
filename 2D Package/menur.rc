@@ -1,0 +1,41 @@
+
+#include "menu.h"
+
+ID MENU
+
+BEGIN
+	POPUP "&Line"
+	BEGIN
+        MENUITEM "&DDA" , LINE_DDA
+        MENUITEM "&MidPoint" , LINE_MIDPOINT
+		MENUITEM "&Parametric", LINE_PARAMETRIC
+	END
+    POPUP "&Ellipse"
+	BEGIN
+		MENUITEM "&Direct", ELLIPSE_DIRECT
+		MENUITEM "&Polar", ELLIPSE_POLAR
+        MENUITEM "&MidPoint" , ELLIPSE_MIDPOINT
+
+
+	END
+	POPUP "&Curves"
+	BEGIN
+		MENUITEM "&Bezier", BEZIER_QUADRATIC_CURVE
+		MENUITEM "&Hermite", HERMITE_CURVE
+        MENUITEM "&Splines" , SPLINES
+
+	END
+    POPUP "&Clipping"
+	BEGIN
+
+	END
+    POPUP "&Save"
+	BEGIN
+
+	END
+    POPUP "&Load"
+	BEGIN
+
+
+	END
+END

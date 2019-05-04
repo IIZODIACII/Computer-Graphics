@@ -207,8 +207,7 @@ void lineMidPoint(HDC hdc, int x1, int y1, int x2, int y2, COLORREF color)
     {
         if (x1>x2)
         {
-            swap(x1,x2);
-            swap(y1,y2);
+            swap(x1,x2,y1,y2);
             dx*=-1;
             dy*=-1;
         }
@@ -260,8 +259,7 @@ void lineMidPoint(HDC hdc, int x1, int y1, int x2, int y2, COLORREF color)
     {
         if (y1>y2)
         {
-            swap(x1,x2);
-            swap(y1,y2);
+            swap(x1,x2,y1,y2);
             dx*=-1;
             dy*=-1;
         }

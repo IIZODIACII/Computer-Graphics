@@ -1,0 +1,125 @@
+# depslib dependency file v1.0
+1556453328 source:c:\users\yusuf\downloads\myproject\menur.rc
+	"menuh.h"
+
+1556453495 c:\users\yusuf\downloads\myproject\menuh.h
+
+1556461533 source:c:\users\yusuf\downloads\myproject\main.cpp
+	<tchar.h>
+	<windows.h>
+	"menuh.h"
+	"circles.h"
+	"ellipse.h"
+	"lines.h"
+	"curves.h"
+	"clipping.h"
+
+1556461533 c:\users\yusuf\downloads\myproject\circles.h
+	"math.h"
+	<iostream>
+
+1556444082 c:\users\yusuf\downloads\myproject\ellipse.h
+	"math.h"
+	<iostream>
+
+1556456841 c:\users\yusuf\downloads\myproject\lines.h
+	"math.h"
+	<iostream>
+
+1556461388 c:\users\yusuf\downloads\myproject\curves.h
+
+1556443906 c:\users\yusuf\downloads\myproject\clipping.h
+
+1556536340 source:c:\users\yusuf\downloads\graphics-project\2d-package\main.cpp
+	<tchar.h>
+	<windows.h>
+	"menuh.h"
+	"circles.h"
+	"ellipse.h"
+	"lines.h"
+	"curves.h"
+	"clipping.h"
+
+1556536340 c:\users\yusuf\downloads\graphics-project\2d-package\menuh.h
+
+1556536340 c:\users\yusuf\downloads\graphics-project\2d-package\circles.h
+	"math.h"
+	<iostream>
+
+1556536340 c:\users\yusuf\downloads\graphics-project\2d-package\ellipse.h
+	"math.h"
+	<iostream>
+
+1556536340 c:\users\yusuf\downloads\graphics-project\2d-package\lines.h
+	"math.h"
+	<iostream>
+
+1556536340 c:\users\yusuf\downloads\graphics-project\2d-package\curves.h
+
+1556536340 c:\users\yusuf\downloads\graphics-project\2d-package\clipping.h
+
+1556536340 source:c:\users\yusuf\downloads\graphics-project\2d-package\menur.rc
+	"menuh.h"
+
+1556991400 source:d:\code-space\assignments\computer-graphics\2d-package\main.cpp
+	<tchar.h>
+	<windows.h>
+	"menu.h"
+	"helper.h"
+	"ellipse.h"
+	"lines.h"
+	"curves.h"
+	"clipping.h"
+
+1556909809 d:\code-space\assignments\computer-graphics\2d-package\menuh.h
+
+1556557280 d:\code-space\assignments\computer-graphics\2d-package\circles.h
+	"math.h"
+	<iostream>
+
+1557000492 d:\code-space\assignments\computer-graphics\2d-package\ellipse.h
+	<cmath>
+	<iostream>
+
+1556998635 d:\code-space\assignments\computer-graphics\2d-package\lines.h
+	"math.h"
+	<iostream>
+
+1556912716 d:\code-space\assignments\computer-graphics\2d-package\curves.h
+
+1556990916 d:\code-space\assignments\computer-graphics\2d-package\clipping.h
+
+1556991024 source:d:\code-space\assignments\computer-graphics\2d-package\menur.rc
+	"menu.h"
+
+1556911856 d:\code-space\assignments\computer-graphics\2d-package\menu.h
+
+1556998772 d:\code-space\assignments\computer-graphics\2d-package\helper.h
+
+1557009820 source:e:\resources\3-2\graphics\computer-graphics-project\2d package\main.cpp
+	<tchar.h>
+	<windows.h>
+	"menu.h"
+	"ellipse.h"
+	"lines.h"
+	"curves.h"
+	"clipping.h"
+
+1557009025 e:\resources\3-2\graphics\computer-graphics-project\2d package\menu.h
+
+1557008976 e:\resources\3-2\graphics\computer-graphics-project\2d package\ellipse.h
+	<cmath>
+	<iostream>
+
+1557009248 e:\resources\3-2\graphics\computer-graphics-project\2d package\lines.h
+	<bits/stdc++.h>
+
+1557002467 e:\resources\3-2\graphics\computer-graphics-project\2d package\curves.h
+	<bits/stdc++.h>
+
+1557007816 e:\resources\3-2\graphics\computer-graphics-project\2d package\clipping.h
+	<bits/stdc++.h>
+
+1556991024 source:e:\resources\3-2\graphics\computer-graphics-project\2d package\menur.rc
+	"menu.h"
+

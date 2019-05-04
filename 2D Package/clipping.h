@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 
 using namespace std;
-    /**  Helpers   **/
+/**  Helpers   **/
 void vIntersect(int x1, int y1, int x2, int y2, int x_edge, int &x_in, int &y_in)
 {
     x_in = x_edge;
@@ -39,32 +39,32 @@ void leftClip(int polyPoints[][2], int &size, int xLeft)
         int secondPoint_X = polyPoints[k][0], secondPoint_Y = polyPoints[k][1];
 
         if(firstPoint_X > xLeft && secondPoint_X > xLeft)
-            {
-                newPoints[newSize][0] = secondPoint_X;
-                newPoints[newSize++][1] = secondPoint_Y;
-            }
-            else if ((firstPoint_X < xLeft && secondPoint_X > xLeft))
-            {
-                int x,y;
-                vIntersect(firstPoint_X,firstPoint_Y,secondPoint_X,secondPoint_Y,xLeft,x,y);
-
-                newPoints[newSize][0] = x;
-                newPoints[newSize++][1] = y;
-
-                newPoints[newSize][0] = secondPoint_X;
-                newPoints[newSize++][1] = secondPoint_Y;
-
-            }
-            else if ((firstPoint_X > xLeft && secondPoint_X < xLeft))
-            {
-                int x,y;
-                vIntersect(firstPoint_X,firstPoint_Y,secondPoint_X,secondPoint_Y,xLeft,x,y);
-
-                newPoints[newSize][0] = x;
-                newPoints[newSize++][1] = y;
-            }
+        {
+            newPoints[newSize][0] = secondPoint_X;
+            newPoints[newSize++][1] = secondPoint_Y;
         }
-        cpy(newPoints,newSize,polyPoints,size);
+        else if ((firstPoint_X < xLeft && secondPoint_X > xLeft))
+        {
+            int x,y;
+            vIntersect(firstPoint_X,firstPoint_Y,secondPoint_X,secondPoint_Y,xLeft,x,y);
+
+            newPoints[newSize][0] = x;
+            newPoints[newSize++][1] = y;
+
+            newPoints[newSize][0] = secondPoint_X;
+            newPoints[newSize++][1] = secondPoint_Y;
+
+        }
+        else if ((firstPoint_X > xLeft && secondPoint_X < xLeft))
+        {
+            int x,y;
+            vIntersect(firstPoint_X,firstPoint_Y,secondPoint_X,secondPoint_Y,xLeft,x,y);
+
+            newPoints[newSize][0] = x;
+            newPoints[newSize++][1] = y;
+        }
+    }
+    cpy(newPoints,newSize,polyPoints,size);
 }
 
 void rightClip(int polyPoints[][2], int &size, int xRight)
@@ -153,39 +153,54 @@ void bottomClip(int polyPoints[][2], int &size, int yBottom)
         int secondPoint_X = polyPoints[k][0], secondPoint_Y = polyPoints[k][1];
 
         if(firstPoint_Y > yBottom && secondPoint_Y > yBottom)
-            {
-                newPoints[newSize][0] = secondPoint_X;
-                newPoints[newSize++][1] = secondPoint_Y;
+        {
+            newPoints[newSize][0] = secondPoint_X;
+            newPoints[newSize++][1] = secondPoint_Y;
 
-            }
-            else if ((firstPoint_Y < yBottom && secondPoint_Y > yBottom))
-            {
-                int x,y;
-                hIntersect(firstPoint_X,firstPoint_Y,secondPoint_X,secondPoint_Y,yBottom,x,y);
-
-                newPoints[newSize][0] = x;
-                newPoints[newSize++][1] = y;
-
-                newPoints[newSize][0] = secondPoint_X;
-                newPoints[newSize++][1] = secondPoint_Y;
-            }
-            else if  (firstPoint_Y > yBottom && secondPoint_Y < yBottom)
-            {
-                int x,y;
-                hIntersect(firstPoint_X,firstPoint_Y,secondPoint_X,secondPoint_Y,yBottom,x,y);
-
-                newPoints[newSize][0] = x;
-                newPoints[newSize++][1] = y;
-            }
         }
+        else if ((firstPoint_Y < yBottom && secondPoint_Y > yBottom))
+        {
+            int x,y;
+            hIntersect(firstPoint_X,firstPoint_Y,secondPoint_X,secondPoint_Y,yBottom,x,y);
+
+            newPoints[newSize][0] = x;
+            newPoints[newSize++][1] = y;
+
+            newPoints[newSize][0] = secondPoint_X;
+            newPoints[newSize++][1] = secondPoint_Y;
+        }
+        else if  (firstPoint_Y > yBottom && secondPoint_Y < yBottom)
+        {
+            int x,y;
+            hIntersect(firstPoint_X,firstPoint_Y,secondPoint_X,secondPoint_Y,yBottom,x,y);
+
+            newPoints[newSize][0] = x;
+            newPoints[newSize++][1] = y;
+        }
+    }
     cpy(newPoints,newSize,polyPoints,size);
 }
 
-void clip(int polyPoints[][2], int &size, int xLeft, int yTop, int xRight, int yBottom)
+void clip(HDC hdc,int polyPoints[][2], int &size, int xLeft, int yTop, int xRight, int yBottom)
 {
+    cout<<"OLD\n";
+    for(int i = 0; i < (size); i++)
+    {
+        int k = (i+1) % (size);
+        cout<<polyPoints[i][0]<<" "<<polyPoints[i][1]<<" "<<polyPoints[k][0]<<" "<<polyPoints[k][1]<<endl;
+        intLineDDA(hdc,polyPoints[i][0],polyPoints[i][1],polyPoints[k][0],polyPoints[k][1],RGB(255,0,0));
+    }
     leftClip(polyPoints,size,xLeft);
     rightClip(polyPoints,size,xRight);
     bottomClip(polyPoints,size,yBottom);
     topClip(polyPoints,size,yTop);
+
+    cout<<"NEW\n";
+    for(int i = 0; i < 5; i++)
+    {
+        int k = (i+1) % 5;
+        cout<<polyPoints[i][0]<<" "<<polyPoints[i][1]<<" "<<polyPoints[k][0]<<" "<<polyPoints[k][1]<<endl;
+        intLineDDA(hdc,polyPoints[i][0],polyPoints[i][1],polyPoints[k][0],polyPoints[k][1],RGB(0,0,255));
+    }
 
 }
