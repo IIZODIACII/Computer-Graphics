@@ -73,10 +73,10 @@ void hermiteCurve(HDC hdc, int x0, int y0, int u0, int v0, int x1, int y1, int u
 
 void spline(HDC hdc, int xArr[], int yArr[], int size, COLORREF color)
 {
-    int u0 = (xArr[3] - xArr[0]), v0 = (yArr[3] - yArr[0]), u1, v1; // get the first 2 control points
+    int u0 = (xArr[3] - xArr[0]), v0 = (yArr[3] - yArr[0]), u1, v1; // get the firs control points
     for (int i = 2; i < size - 1; i++)
     {
-        // get the second 2 control points
+        // get the second control point
         u1 = (xArr[i + 1] - xArr[i - 1]);
         v1 = (yArr[i + 1] - yArr[i - 1]);
 

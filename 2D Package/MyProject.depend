@@ -96,7 +96,7 @@
 
 1556998772 d:\code-space\assignments\computer-graphics\2d-package\helper.h
 
-1557037192 source:e:\resources\3-2\graphics\computer-graphics-project\2d package\main.cpp
+1557045312 source:e:\resources\3-2\graphics\computer-graphics-project\2d package\main.cpp
 	<tchar.h>
 	<windows.h>
 	"file.h"
@@ -114,13 +114,13 @@
 	<cmath>
 	<iostream>
 
-1557036888 e:\resources\3-2\graphics\computer-graphics-project\2d package\lines.h
+1557046073 e:\resources\3-2\graphics\computer-graphics-project\2d package\lines.h
 	<bits/stdc++.h>
 
-1557036888 e:\resources\3-2\graphics\computer-graphics-project\2d package\curves.h
+1557049904 e:\resources\3-2\graphics\computer-graphics-project\2d package\curves.h
 	<bits/stdc++.h>
 
-1557037288 e:\resources\3-2\graphics\computer-graphics-project\2d package\clipping.h
+1557046289 e:\resources\3-2\graphics\computer-graphics-project\2d package\clipping.h
 	<bits/stdc++.h>
 
 1557037114 source:e:\resources\3-2\graphics\computer-graphics-project\2d package\menur.rc

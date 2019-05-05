@@ -212,7 +212,7 @@ void clip(HWND hwnd,int polyPoints[][2], int &size, int xLeft, int yTop, int xRi
     drawPoly(hdc,polyPoints,size,RGB(255,0,0));
 
     COLORREF color = RGB(0,0,255);
-    topClip(polyPoints,size,yTop);
+    leftClip(polyPoints,size,xLeft);
     Sleep(800);
 
 //    InvalidateRect(hwnd, &rect, TRUE);
@@ -232,7 +232,7 @@ void clip(HWND hwnd,int polyPoints[][2], int &size, int xLeft, int yTop, int xRi
     cout<<"\n";
     drawPoly(hdc,polyPoints,size,color);
 
-    leftClip(polyPoints,size,xLeft);
+    bottomClip(polyPoints,size,yBottom);
     Sleep(800);
 
 //    InvalidateRect(hwnd, NULL, TRUE);
@@ -241,7 +241,7 @@ void clip(HWND hwnd,int polyPoints[][2], int &size, int xLeft, int yTop, int xRi
     cout<<"\n";
     drawPoly(hdc,polyPoints,size,color);
 
-    bottomClip(polyPoints,size,yBottom);
+    topClip(polyPoints,size,yTop);
     Sleep(800);
 
 //    InvalidateRect(hwnd, NULL, TRUE);

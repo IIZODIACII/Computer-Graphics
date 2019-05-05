@@ -128,7 +128,7 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
         {
             if (id == LINE_DDA)
             {
-                intLineDDA(hdc, arrX[0], arrY[0], arrX[1], arrY[1], color);
+                simpleLineDDA(hdc, arrX[0], arrY[0], arrX[1], arrY[1], color);
                 counter = 0;
             }
             else if (id == LINE_PARAMETRIC)
