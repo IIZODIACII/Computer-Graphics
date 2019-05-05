@@ -27,16 +27,14 @@ BEGIN
 	END
     POPUP "&Clipping"
 	BEGIN
-    MENUITEM "&Clip" , CLIP
 
 	END
-    POPUP "&Save"
+    POPUP "&File"
+
 	BEGIN
-
+	MENUITEM "&Save", Save_ID
+    MENUITEM "&Load" , Load_ID
 	END
-    POPUP "&Load"
-	BEGIN
 
 
-	END
 END

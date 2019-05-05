@@ -8,6 +8,10 @@ void draw4Pixels(HDC hdc, int xc, int yc, int x, int y, COLORREF color)
     SetPixel(hdc, xc + x, yc - y, color);
     SetPixel(hdc, xc - x, yc - y, color);
     SetPixel(hdc, xc - x, yc + y, color);
+    savePoint(xc + x, yc + y);
+    savePoint(xc + x, yc - y);
+    savePoint(xc - x, yc - y);
+    savePoint(xc - x, yc + y);
 }
 
 void drawEllipseDirect(HDC hdc, int xc, int yc, int horizontalRadius, int verticalRadius, COLORREF rgb)

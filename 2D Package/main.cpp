@@ -6,11 +6,17 @@
 
 #include <tchar.h>
 #include <windows.h>
+#include "file.h"
 #include "menu.h"
 #include "ellipse.h"
 #include "lines.h"
 #include "curves.h"
 #include "clipping.h"
+#include <bits/stdc++.h>
+#include <vector>
+
+using namespace std;
+
 /*  Declare Windows procedure  */
 LRESULT CALLBACK WindowProcedure(HWND, UINT, WPARAM, LPARAM);
 
@@ -49,7 +55,7 @@ int WINAPI WinMain(HINSTANCE hThisInstance, HINSTANCE hPrevInstance, LPSTR lpszA
     hwnd = CreateWindowEx(
         0,                                       /* Extended possibilites for variation */
         szClassName,                             /* Classname */
-        _T("Code::Blocks Template Windows App"), /* Title Text */
+        _T("Computer Graphics Project"), /* Title Text */
         WS_OVERLAPPEDWINDOW,                     /* default window */
         CW_USEDEFAULT,                           /* Windows decides the position */
         CW_USEDEFAULT,                           /* where the window ends up on the screen */
@@ -81,8 +87,6 @@ int WINAPI WinMain(HINSTANCE hThisInstance, HINSTANCE hPrevInstance, LPSTR lpszA
 int horizontalRadius, verticalRadius, counter = 0;
 COLORREF color = RGB(1, 126, 230);
 int arrX[10], arrY[10];
-int xLeft = 100, yTop = 200, xRight = 200, yBottom = 100;
-
 LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     HDC hdc = GetDC(hwnd);
@@ -90,12 +94,19 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
     {
     case WM_COMMAND:
         id = LOWORD(wParam);
-        if(id == CLIP)
-        {
-            drawSquare(hdc,xLeft,yTop,xRight,yBottom);
+        cout << "hello " << id << endl;
+
+        if (id == Save_ID){
+            cout << "This Save Functions" << endl;
+            saveToFile();
+        }
+        if (id == Load_ID){
+            cout << "Loading from the file" << endl;
+            LoadFromFile(hdc);
         }
         break;
     case WM_LBUTTONUP:
+        cout << LOWORD(lParam) << " " <<  HIWORD(lParam) << endl ;
         if (counter == 0)
             ReleaseDC(hwnd, hdc);
         arrX[counter] = LOWORD(lParam);
@@ -169,16 +180,6 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
             {
                 spline(hdc, arrX, arrY, 4, color);
                 counter = 0;
-            }
-            if (id == CLIP)
-            {
-                int polyPoints[counter][2];
-                for(int i = 0; i <= counter; i++)
-                {
-                    polyPoints[i][0] = arrX[i];
-                    polyPoints[i][1] = arrY[i];
-                }
-                clip(hwnd,polyPoints,counter,xLeft,yTop,xRight,yBottom);
             }
         }
 

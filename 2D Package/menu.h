@@ -11,7 +11,7 @@
 #define BEZIER_QUADRATIC_CURVE 8
 #define HERMITE_CURVE 9
 #define SPLINES 10
-#define CLIP 11
+#define Clip 11
 #define Save_ID 12
 #define Load_ID 13
 
