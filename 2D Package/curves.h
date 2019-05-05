@@ -35,6 +35,8 @@ void bezierCurve(HDC hdc, int x0, int y0, int u0, int v0, int x1, int y1, int u1
         y = alphaY[0] + alphaY[1] * t  + alphaY[2] * t * t + alphaY[3] * t * t * t;
 
         SetPixel(hdc, round(x), round(y), color);
+        savePoint(round(x), y);
+
     }
 }
 void hermiteCurve(HDC hdc, int x0, int y0, int u0, int v0, int x1, int y1, int u1, int v1, COLORREF color)
@@ -64,6 +66,8 @@ void hermiteCurve(HDC hdc, int x0, int y0, int u0, int v0, int x1, int y1, int u
         y = alphaY[0] * t * t * t + alphaY[1] * t * t  + alphaY[2] * t + alphaY[3];
 
         SetPixel(hdc, round(x), round(y), color);
+                         savePoint(round(x), y);
+
     }
 }
 
