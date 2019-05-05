@@ -27,6 +27,7 @@ BEGIN
 	END
     POPUP "&Clipping"
 	BEGIN
+    MENUITEM "&Clip" , CLIP
 
 	END
     POPUP "&Save"

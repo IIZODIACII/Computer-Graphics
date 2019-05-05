@@ -96,7 +96,7 @@
 
 1556998772 d:\code-space\assignments\computer-graphics\2d-package\helper.h
 
-1557009820 source:e:\resources\3-2\graphics\computer-graphics-project\2d package\main.cpp
+1557012222 source:e:\resources\3-2\graphics\computer-graphics-project\2d package\main.cpp
 	<tchar.h>
 	<windows.h>
 	"menu.h"
@@ -105,9 +105,9 @@
 	"curves.h"
 	"clipping.h"
 
-1557009025 e:\resources\3-2\graphics\computer-graphics-project\2d package\menu.h
+1557011694 e:\resources\3-2\graphics\computer-graphics-project\2d package\menu.h
 
-1557008976 e:\resources\3-2\graphics\computer-graphics-project\2d package\ellipse.h
+1557010473 e:\resources\3-2\graphics\computer-graphics-project\2d package\ellipse.h
 	<cmath>
 	<iostream>
 
@@ -117,9 +117,9 @@
 1557002467 e:\resources\3-2\graphics\computer-graphics-project\2d package\curves.h
 	<bits/stdc++.h>
 
-1557007816 e:\resources\3-2\graphics\computer-graphics-project\2d package\clipping.h
+1557015293 e:\resources\3-2\graphics\computer-graphics-project\2d package\clipping.h
 	<bits/stdc++.h>
 
-1556991024 source:e:\resources\3-2\graphics\computer-graphics-project\2d package\menur.rc
+1557011866 source:e:\resources\3-2\graphics\computer-graphics-project\2d package\menur.rc
 	"menu.h"
 
