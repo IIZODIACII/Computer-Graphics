@@ -27,7 +27,7 @@ BEGIN
 	END
     POPUP "&Clipping"
 	BEGIN
-
+         MENUITEM "&Sutherland-Hodgman" , CLIP
 	END
     POPUP "&File"
 

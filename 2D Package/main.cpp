@@ -87,6 +87,8 @@ int WINAPI WinMain(HINSTANCE hThisInstance, HINSTANCE hPrevInstance, LPSTR lpszA
 int horizontalRadius, verticalRadius, counter = 0;
 COLORREF color = RGB(1, 126, 230);
 int arrX[10], arrY[10];
+int xLeft = 100, yTop = 200, xRight = 200, yBottom = 100;
+
 LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     HDC hdc = GetDC(hwnd);
@@ -103,6 +105,10 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
         if (id == Load_ID){
             cout << "Loading from the file" << endl;
             LoadFromFile(hdc);
+        }
+        if(id == CLIP)
+        {
+            drawSquare(hdc,xLeft,yTop,xRight,yBottom);
         }
         break;
     case WM_LBUTTONUP:
@@ -180,6 +186,16 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
             {
                 spline(hdc, arrX, arrY, 4, color);
                 counter = 0;
+            }
+            if (id == CLIP)
+            {
+                int polyPoints[counter][2];
+                for(int i = 0; i <= counter; i++)
+                {
+                    polyPoints[i][0] = arrX[i];
+                    polyPoints[i][1] = arrY[i];
+                }
+                clip(hwnd,polyPoints,counter,xLeft,yTop,xRight,yBottom);
             }
         }
 

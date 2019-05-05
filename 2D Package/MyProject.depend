@@ -96,31 +96,34 @@
 
 1556998772 d:\code-space\assignments\computer-graphics\2d-package\helper.h
 
-1557009820 source:e:\resources\3-2\graphics\computer-graphics-project\2d package\main.cpp
+1557037192 source:e:\resources\3-2\graphics\computer-graphics-project\2d package\main.cpp
 	<tchar.h>
 	<windows.h>
+	"file.h"
 	"menu.h"
 	"ellipse.h"
 	"lines.h"
 	"curves.h"
 	"clipping.h"
+	<bits/stdc++.h>
+	<vector>
 
-1557009025 e:\resources\3-2\graphics\computer-graphics-project\2d package\menu.h
+1557037209 e:\resources\3-2\graphics\computer-graphics-project\2d package\menu.h
 
-1557008976 e:\resources\3-2\graphics\computer-graphics-project\2d package\ellipse.h
+1557036888 e:\resources\3-2\graphics\computer-graphics-project\2d package\ellipse.h
 	<cmath>
 	<iostream>
 
-1557009248 e:\resources\3-2\graphics\computer-graphics-project\2d package\lines.h
+1557036888 e:\resources\3-2\graphics\computer-graphics-project\2d package\lines.h
 	<bits/stdc++.h>
 
-1557002467 e:\resources\3-2\graphics\computer-graphics-project\2d package\curves.h
+1557036888 e:\resources\3-2\graphics\computer-graphics-project\2d package\curves.h
 	<bits/stdc++.h>
 
-1557007816 e:\resources\3-2\graphics\computer-graphics-project\2d package\clipping.h
+1557037288 e:\resources\3-2\graphics\computer-graphics-project\2d package\clipping.h
 	<bits/stdc++.h>
 
-1556991024 source:e:\resources\3-2\graphics\computer-graphics-project\2d package\menur.rc
+1557037114 source:e:\resources\3-2\graphics\computer-graphics-project\2d package\menur.rc
 	"menu.h"
 
 1557011467 source:c:\users\sadat\desktop\graphics\computer-graphics-project-master\2d package\menur.rc
@@ -154,6 +157,12 @@
 	<bits/stdc++.h>
 
 1557017127 c:\users\sadat\desktop\graphics\computer-graphics-project-master\2d package\file.h
+	<bits/stdc++.h>
+	<windows.h>
+	<fstream>
+	<vector>
+
+1557036888 e:\resources\3-2\graphics\computer-graphics-project\2d package\file.h
 	<bits/stdc++.h>
 	<windows.h>
 	<fstream>

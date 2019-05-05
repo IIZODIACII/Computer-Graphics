@@ -5,13 +5,13 @@ using namespace std;
 void vIntersect(int x1, int y1, int x2, int y2, int x_edge, int &x_in, int &y_in)
 {
     x_in = x_edge;
-    y_in = y1 + (x_in-x1) * (y2 - y1) / (x2 - x1);
+    y_in = y1 + (x_edge-x1) * (y2 - y1) / (x2 - x1);
 }
 
 void hIntersect(int x1, int y1, int x2, int y2, int y_edge, int &x_in, int &y_in)
 {
     y_in = y_edge;
-    x_in = x1 + (y_in-y1) /(float)((y2 - y1) / (x2 - x1));
+    x_in = x1 + (y_edge-y1) /(float)((y2 - y1) / (x2 - x1));
 }
 void cpy(int newPoints[][2], int newSize,int polyPoints[][2], int &size)
 {
@@ -25,6 +25,22 @@ void cpy(int newPoints[][2], int newSize,int polyPoints[][2], int &size)
             polyPoints[j+1][0] = newPoints[0][0];
             polyPoints[j+1][1] = newPoints[0][1];
         }
+    }
+}
+void drawSquare(HDC hdc, int xLeft, int yTop, int xRight, int yBottom)
+{
+    lineMidPoint(hdc,xLeft,yBottom,xLeft,yTop,RGB(0,0,0));
+    lineMidPoint(hdc,xLeft,yTop,xRight,yTop,RGB(0,0,0));
+    lineMidPoint(hdc,xRight,yTop,xRight,yBottom,RGB(0,0,0));
+    lineMidPoint(hdc,xLeft,yBottom,xRight,yBottom,RGB(0,0,0));
+}
+void drawPoly(HDC hdc,int polyPoints[][2],int size, COLORREF color)
+{
+    for(int i = 0; i < (size); i++)
+    {
+        int k = (i+1) % (size);
+        cout<<polyPoints[i][0]<<" "<<polyPoints[i][1]<<" "<<polyPoints[k][0]<<" "<<polyPoints[k][1]<<endl;
+        intLineDDA(hdc,polyPoints[i][0],polyPoints[i][1],polyPoints[k][0],polyPoints[k][1],color);
     }
 }
 /***************************************************/
@@ -181,26 +197,56 @@ void bottomClip(int polyPoints[][2], int &size, int yBottom)
     cpy(newPoints,newSize,polyPoints,size);
 }
 
-void clip(HDC hdc,int polyPoints[][2], int &size, int xLeft, int yTop, int xRight, int yBottom)
+void clip(HWND hwnd,int polyPoints[][2], int &size, int xLeft, int yTop, int xRight, int yBottom)
 {
+    int h,w;
+    RECT rect;
+    if(GetWindowRect(hwnd, &rect))
+    {
+        w = rect.right - rect.left;
+        h = rect.bottom - rect.top;
+    }
+
+    HDC hdc = GetDC(hwnd);
     cout<<"OLD\n";
-    for(int i = 0; i < (size); i++)
-    {
-        int k = (i+1) % (size);
-        cout<<polyPoints[i][0]<<" "<<polyPoints[i][1]<<" "<<polyPoints[k][0]<<" "<<polyPoints[k][1]<<endl;
-        intLineDDA(hdc,polyPoints[i][0],polyPoints[i][1],polyPoints[k][0],polyPoints[k][1],RGB(255,0,0));
-    }
-    leftClip(polyPoints,size,xLeft);
-    rightClip(polyPoints,size,xRight);
-    bottomClip(polyPoints,size,yBottom);
+    drawPoly(hdc,polyPoints,size,RGB(255,0,0));
+
+    COLORREF color = RGB(0,0,255);
     topClip(polyPoints,size,yTop);
+    Sleep(800);
 
-    cout<<"NEW\n";
-    for(int i = 0; i < 5; i++)
-    {
-        int k = (i+1) % 5;
-        cout<<polyPoints[i][0]<<" "<<polyPoints[i][1]<<" "<<polyPoints[k][0]<<" "<<polyPoints[k][1]<<endl;
-        intLineDDA(hdc,polyPoints[i][0],polyPoints[i][1],polyPoints[k][0],polyPoints[k][1],RGB(0,0,255));
-    }
+//    InvalidateRect(hwnd, &rect, TRUE);
+    BitBlt(hdc, 0,0, w, h, 0,0,0, WHITENESS);
 
+    drawSquare(hdc,xLeft,yTop,xRight,yBottom);
+    cout<<"\n";
+    drawPoly(hdc,polyPoints,size,color);
+//    ValidateRect(hwnd, &rect);
+
+    rightClip(polyPoints,size,xRight);
+    Sleep(800);
+
+//    InvalidateRect(hwnd, NULL, TRUE);
+    BitBlt(hdc, 0,0, w, h, 0,0,0, WHITENESS);
+    drawSquare(hdc,xLeft,yTop,xRight,yBottom);
+    cout<<"\n";
+    drawPoly(hdc,polyPoints,size,color);
+
+    leftClip(polyPoints,size,xLeft);
+    Sleep(800);
+
+//    InvalidateRect(hwnd, NULL, TRUE);
+    BitBlt(hdc, 0,0, w, h, 0,0,0, WHITENESS);
+    drawSquare(hdc,xLeft,yTop,xRight,yBottom);
+    cout<<"\n";
+    drawPoly(hdc,polyPoints,size,color);
+
+    bottomClip(polyPoints,size,yBottom);
+    Sleep(800);
+
+//    InvalidateRect(hwnd, NULL, TRUE);
+    BitBlt(hdc, 0,0, w, h, 0,0,0, WHITENESS);
+    drawSquare(hdc,xLeft,yTop,xRight,yBottom);
+    cout<<"Final\n";
+    drawPoly(hdc,polyPoints,size,color);
 }
