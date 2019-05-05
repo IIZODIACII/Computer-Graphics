@@ -54,41 +54,69 @@ void drawEllipsePolar(HDC hdc, int xc, int yc, int horizontalRadius, int vertica
     }
 }
 
-void drawEllipseMidPoint(HDC hdc, int xc, int yc, int horizontalRadius, int verticalradius, COLORREF rgb)
+void drawEllipseMidPoint(HDC hdc, int xc, int yc, int horzRad, int vertRad, COLORREF rgb)
 {
+    float dx, dy, d1, d2, x, y;
+    x = 0;
+    y = vertRad;
 
-    double y = verticalradius, x = 0;
-    double HRadiusSquare = pow(horizontalRadius, 2), verticalRadius = pow(verticalradius, 2);
-    int d = verticalRadius - (HRadiusSquare * verticalRadius) + (0.25 * HRadiusSquare);
-    draw4Pixels(hdc, xc, yc, round(x), round(y), rgb);
-    while (verticalRadius * x <= HRadiusSquare * y)
+    // region 1
+    d1 = (vertRad * vertRad) - (horzRad * horzRad * vertRad) +
+         (0.25 * horzRad * horzRad);
+    dx = 2 * vertRad * vertRad * x;
+    dy = 2 * horzRad * horzRad * y;
+
+    
+    while (dx < dy)
     {
-        x++;
-        if (d > 0)
+
+        // Print points based on 4-way symmetvertRad
+        draw4Pixels(hdc, xc, yc, x, y, rgb);
+
+    
+        // decision parameter based on algorithm
+        if (d1 < 0)
         {
-            y--;
-            d += verticalRadius * (2 * x + 3) + HRadiusSquare * (-2 * y + 2);
-        }
-        else
-        {
-            d += verticalRadius * (2 * x + 3);
-        }
-        draw4Pixels(hdc, xc, yc, round(x), round(y), rgb);
-    }
-    d = pow((x + 0.5), 2) * verticalRadius + HRadiusSquare * pow((y - 1), 2) - HRadiusSquare * verticalRadius;
-    draw4Pixels(hdc, xc, yc, round(x), round(y), rgb);
-    while (y != 0)
-    {
-        y--;
-        if (d > 0)
-        {
-            d += HRadiusSquare * (-2 * y + 3);
+            x++;
+            dx = dx + (2 * vertRad * vertRad);
+            d1 = d1 + dx + (vertRad * vertRad);
         }
         else
         {
             x++;
-            d += verticalRadius * (2 * x + 2) + HRadiusSquare * (-2 * y + 3);
+            y--;
+            dx = dx + (2 * vertRad * vertRad);
+            dy = dy - (2 * horzRad * horzRad);
+            d1 = d1 + dx - dy + (vertRad * vertRad);
         }
-        draw4Pixels(hdc, xc, yc, round(x), round(y), rgb);
+    }
+
+    // region 2
+    d2 = ((vertRad * vertRad) * ((x + 0.5) * (x + 0.5))) +
+         ((horzRad * horzRad) * ((y - 1) * (y - 1))) -
+         (horzRad * horzRad * vertRad * vertRad);
+
+
+    while (y >= 0)
+    {
+
+      
+        draw4Pixels(hdc, xc, yc, x, y, rgb);
+
+        
+        if (d2 > 0)
+        {
+            y--;
+            dy = dy - (2 * horzRad * horzRad);
+            d2 = d2 + (horzRad * horzRad) - dy;
+        }
+        else
+        {
+            y--;
+            x++;
+            dx = dx + (2 * vertRad * vertRad);
+            dy = dy - (2 * horzRad * horzRad);
+            d2 = d2 + dx - dy + (horzRad * horzRad);
+        }
     }
 }
